@@ -186,15 +186,15 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-    // get a key for message queue
-    if ((key = ftok("msgq.txt", 1)) == -1) {
+    // get a key for our message queue
+    if ((key = ftok("log.txt", 1)) == -1) {
         perror("ftok");
         exit(1);
     }
 
-    // create message queue
-    if ((msqid = msgget(key, 0644)) == -1) {
-        perror("msgget in child");
+    // create our message queue
+    if ((msqid = msgget(key, PERMS | IPC_CREAT)) == -1) {
+        perror("msgget in parent");
         exit(1);
     }
 

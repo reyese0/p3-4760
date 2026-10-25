@@ -1,24 +1,24 @@
-CC      = gcc
-CFLAGS  = -g3 -Wall -Wextra
-TARGET1 = worker
-TARGET2 = oss
+CC	= gcc -g3
+CFLAGS  = -g3 -Wall
+TARGET1 = oss
+TARGET2 = worker
 
-OBJS1   = worker.o
-OBJS2   = oss.o
+OBJS1	= oss.o
+OBJS2	= worker.o
 
-all: $(TARGET1) $(TARGET2)
+all:	$(TARGET1) $(TARGET2)
 
-$(TARGET1): $(OBJS1)
+$(TARGET1):	$(OBJS1)
 	$(CC) -o $(TARGET1) $(OBJS1)
 
-$(TARGET2): $(OBJS2)
+$(TARGET2):	$(OBJS2)
 	$(CC) -o $(TARGET2) $(OBJS2)
 
-worker.o: worker.c
-	$(CC) $(CFLAGS) -c worker.c
-
-oss.o: oss.c
+oss.o:	oss.c
 	$(CC) $(CFLAGS) -c oss.c
 
+worker.o:	worker.c
+	$(CC) $(CFLAGS) -c worker.c
+
 clean:
-	rm -f *.o $(TARGET1) $(TARGET2)
+	/bin/rm -f *.o $(TARGET1) $(TARGET2)
